@@ -1,0 +1,19 @@
+[package]
+name = "const_traits"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-only"
+description = "const-ready version of core::convert / std::convert traits + (const_ops)"
+repository = "https://github.com/haennes/const_traits"
+homepage = "https://github.com/haennes/const_traits"
+documentation = "https://docs.rs/const_traits"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+const_ops = {version = "0.1.0", optional = true}
+
+[features]
+ops = ["const_ops"]
+default = ["ops"]
