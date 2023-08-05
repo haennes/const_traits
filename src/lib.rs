@@ -23,9 +23,9 @@ pub trait TryInto<T>: Sized {
     fn try_into(self) -> Result<T, Self::Error>;
 }
 
-impl<T, U> Into<U> for T
+impl<T, U> const Into<U> for T
 where
-    U: From<T>,
+    U: ~const From<T>,
 {
     #[inline]
     fn into(self) -> U {
@@ -33,7 +33,7 @@ where
     }
 }
 
-impl<T> From<T> for T {
+impl<T> const From<T> for T {
     /// Returns the argument unchanged.
     #[inline(always)]
     fn from(t: T) -> T {
@@ -41,9 +41,9 @@ impl<T> From<T> for T {
     }
 }
 
-impl<T, U> TryInto<U> for T
+impl<T, U> const TryInto<U> for T
 where
-    U: TryFrom<T>,
+    U: ~const TryFrom<T>,
 {
     type Error = U::Error;
 
@@ -53,9 +53,9 @@ where
     }
 }
 
-impl<T, U> TryFrom<U> for T
+impl<T, U> const TryFrom<U> for T
 where
-    U: Into<T>,
+    U: ~const Into<T>,
 {
     type Error = Infallible;
 
