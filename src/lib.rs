@@ -1,6 +1,7 @@
-#![feature(const_trait_impl)]
+#![feature(const_trait_impl, never_type)]
 use core::convert::Infallible;
 
+mod impls;
 pub use const_ops::*;
 
 #[const_trait]
